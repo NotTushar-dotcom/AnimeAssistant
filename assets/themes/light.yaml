@@ -1,0 +1,77 @@
+# =============================================================================
+# AARA LIGHT THEME
+# =============================================================================
+# Light theme with purple accents
+
+name: Light
+version: "1.0"
+
+# Primary colors
+background: "#f8f9fa"
+surface: "#ffffff"
+foreground: "#1e1e2e"
+
+# Accent colors
+primary: "#9333ea"      # Purple (darker for light bg)
+secondary: "#4f46e5"    # Indigo
+accent: "#db2777"       # Pink
+
+# Semantic colors
+success: "#059669"
+warning: "#d97706"
+error: "#dc2626"
+info: "#2563eb"
+
+# Text colors
+text:
+  primary: "#1e1e2e"
+  secondary: "#4a4a5a"
+  muted: "#888888"
+  disabled: "#cccccc"
+
+# Chat colors
+chat:
+  user_bubble: "#2563eb"
+  user_text: "#ffffff"
+  assistant_bubble: "#9333ea"
+  assistant_text: "#ffffff"
+  timestamp: "rgba(0, 0, 0, 0.5)"
+
+# UI element colors
+button:
+  primary_bg: "#9333ea"
+  primary_hover: "#7c3aed"
+  primary_text: "#ffffff"
+  secondary_bg: "#e2e8f0"
+  secondary_hover: "#cbd5e1"
+  secondary_text: "#1e1e2e"
+
+input:
+  background: "#ffffff"
+  border: "#e2e8f0"
+  focus_border: "#9333ea"
+  text: "#1e1e2e"
+  placeholder: "#94a3b8"
+
+# Character emotions
+emotions:
+  happy: "#eab308"
+  excited: "#ef4444"
+  thinking: "#0ea5e9"
+  concerned: "#f97316"
+  shy: "#ec4899"
+  surprised: "#a855f7"
+  sad: "#6366f1"
+  playful: "#22c55e"
+  determined: "#ea580c"
+  curious: "#06b6d4"
+  proud: "#8b5cf6"
+  worried: "#ca8a04"
+  relaxed: "#a78bfa"
+  focused: "#2563eb"
+
+# Scrollbar
+scrollbar:
+  background: "rgba(0, 0, 0, 0.05)"
+  thumb: "rgba(0, 0, 0, 0.2)"
+  thumb_hover: "rgba(0, 0, 0, 0.3)"

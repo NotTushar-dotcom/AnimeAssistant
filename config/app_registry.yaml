@@ -1,100 +1,238 @@
-# Application Registry
-# Maps common app names to their executable paths on Windows
-# Aara uses this to launch applications
+# =============================================================================
+# AARA - APPLICATION REGISTRY
+# =============================================================================
+# Maps application names to executable paths and aliases
+# Used for voice commands like "open chrome", "launch vscode", etc.
 
 applications:
-  # Development
+  # --------------------------------------------------------------------------
+  # BROWSERS
+  # --------------------------------------------------------------------------
+  chrome:
+    name: "Google Chrome"
+    path: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+    aliases: ["chrome", "google chrome", "browser", "google"]
+    category: browser
+
+  firefox:
+    name: "Mozilla Firefox"
+    path: "C:\\Program Files\\Mozilla Firefox\\firefox.exe"
+    aliases: ["firefox", "mozilla", "mozilla firefox"]
+    category: browser
+
+  edge:
+    name: "Microsoft Edge"
+    path: "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+    aliases: ["edge", "microsoft edge", "ms edge"]
+    category: browser
+
+  brave:
+    name: "Brave Browser"
+    path: "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
+    aliases: ["brave", "brave browser"]
+    category: browser
+
+  # --------------------------------------------------------------------------
+  # DEVELOPMENT
+  # --------------------------------------------------------------------------
   vscode:
     name: "Visual Studio Code"
-    path: "code"
-    aliases: ["vs code", "visual studio code", "code editor"]
-
-  notepad:
-    name: "Notepad"
-    path: "notepad.exe"
-    aliases: ["text editor", "notepad++"]
+    path: "C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+    aliases: ["vscode", "vs code", "visual studio code", "code"]
+    category: development
 
   terminal:
     name: "Windows Terminal"
     path: "wt.exe"
-    aliases: ["cmd", "command prompt", "powershell", "shell"]
+    aliases: ["terminal", "windows terminal", "wt", "command prompt", "cmd"]
+    category: development
 
-  # Browsers
-  chrome:
-    name: "Google Chrome"
-    path: "chrome"
-    aliases: ["google chrome", "browser", "web browser"]
+  powershell:
+    name: "PowerShell"
+    path: "powershell.exe"
+    aliases: ["powershell", "ps", "power shell"]
+    category: development
 
-  firefox:
-    name: "Mozilla Firefox"
-    path: "firefox"
-    aliases: ["mozilla", "fire fox"]
+  git_bash:
+    name: "Git Bash"
+    path: "C:\\Program Files\\Git\\git-bash.exe"
+    aliases: ["git bash", "bash", "git"]
+    category: development
 
-  edge:
-    name: "Microsoft Edge"
-    path: "msedge"
-    aliases: ["microsoft edge"]
-
-  # Media
+  # --------------------------------------------------------------------------
+  # MEDIA
+  # --------------------------------------------------------------------------
   spotify:
     name: "Spotify"
-    path: "spotify"
-    aliases: ["music", "music player"]
+    path: "C:\\Users\\%USERNAME%\\AppData\\Roaming\\Spotify\\Spotify.exe"
+    aliases: ["spotify", "music", "music player"]
+    category: media
 
   vlc:
     name: "VLC Media Player"
-    path: "vlc"
-    aliases: ["video player", "media player"]
+    path: "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe"
+    aliases: ["vlc", "vlc player", "video player", "media player"]
+    category: media
 
-  # Communication
+  # --------------------------------------------------------------------------
+  # COMMUNICATION
+  # --------------------------------------------------------------------------
   discord:
     name: "Discord"
-    path: "discord"
-    aliases: ["disc"]
+    path: "C:\\Users\\%USERNAME%\\AppData\\Local\\Discord\\Update.exe"
+    args: ["--processStart", "Discord.exe"]
+    aliases: ["discord"]
+    category: communication
 
   slack:
     name: "Slack"
-    path: "slack"
-    aliases: []
+    path: "C:\\Users\\%USERNAME%\\AppData\\Local\\slack\\slack.exe"
+    aliases: ["slack"]
+    category: communication
 
-  # Productivity
-  explorer:
-    name: "File Explorer"
-    path: "explorer.exe"
-    aliases: ["files", "file manager", "my computer", "this pc"]
+  teams:
+    name: "Microsoft Teams"
+    path: "C:\\Users\\%USERNAME%\\AppData\\Local\\Microsoft\\Teams\\Update.exe"
+    args: ["--processStart", "Teams.exe"]
+    aliases: ["teams", "microsoft teams", "ms teams"]
+    category: communication
+
+  # --------------------------------------------------------------------------
+  # PRODUCTIVITY
+  # --------------------------------------------------------------------------
+  notepad:
+    name: "Notepad"
+    path: "notepad.exe"
+    aliases: ["notepad", "text editor", "notes"]
+    category: productivity
+
+  notepad_plus:
+    name: "Notepad++"
+    path: "C:\\Program Files\\Notepad++\\notepad++.exe"
+    aliases: ["notepad++", "notepad plus", "npp"]
+    category: productivity
 
   calculator:
     name: "Calculator"
     path: "calc.exe"
-    aliases: ["calc"]
+    aliases: ["calculator", "calc", "calculate"]
+    category: productivity
 
-  # Games (customize these)
+  explorer:
+    name: "File Explorer"
+    path: "explorer.exe"
+    aliases: ["explorer", "file explorer", "files", "my computer", "this pc"]
+    category: productivity
+
+  settings:
+    name: "Windows Settings"
+    path: "ms-settings:"
+    aliases: ["settings", "windows settings", "system settings"]
+    category: productivity
+
+  # --------------------------------------------------------------------------
+  # GAMING
+  # --------------------------------------------------------------------------
   steam:
     name: "Steam"
-    path: "steam"
-    aliases: ["games", "game launcher"]
+    path: "C:\\Program Files (x86)\\Steam\\steam.exe"
+    aliases: ["steam", "games"]
+    category: gaming
 
-# System commands (not applications)
+# =============================================================================
+# SYSTEM COMMANDS
+# =============================================================================
+# Commands that require confirmation before execution
+
 system_commands:
   shutdown:
-    command: "shutdown /s /t 0"
-    confirmation_required: true
+    command: "shutdown /s /t 60"
+    description: "Shutdown the computer in 60 seconds"
+    cancel_command: "shutdown /a"
+    requires_confirmation: true
+    aliases: ["shutdown", "shut down", "turn off", "power off"]
 
   restart:
-    command: "shutdown /r /t 0"
-    confirmation_required: true
+    command: "shutdown /r /t 60"
+    description: "Restart the computer in 60 seconds"
+    cancel_command: "shutdown /a"
+    requires_confirmation: true
+    aliases: ["restart", "reboot", "restart computer"]
 
   sleep:
     command: "rundll32.exe powrprof.dll,SetSuspendState 0,1,0"
-    confirmation_required: true
+    description: "Put the computer to sleep"
+    requires_confirmation: true
+    aliases: ["sleep", "hibernate", "standby"]
 
   lock:
     command: "rundll32.exe user32.dll,LockWorkStation"
-    confirmation_required: false
+    description: "Lock the screen"
+    requires_confirmation: false
+    aliases: ["lock", "lock screen", "lock computer"]
 
-# Volume control
-volume:
-  mute: "nircmd.exe mutesysvolume 2"
-  volume_up: "nircmd.exe changesysvolume 5000"
-  volume_down: "nircmd.exe changesysvolume -5000"
-  set_volume: "nircmd.exe setsysvolume {value}"  # 0-65535
+  cancel_shutdown:
+    command: "shutdown /a"
+    description: "Cancel pending shutdown/restart"
+    requires_confirmation: false
+    aliases: ["cancel shutdown", "abort shutdown", "stop shutdown"]
+
+# =============================================================================
+# FOLDERS
+# =============================================================================
+# Quick access to common folders
+
+folders:
+  downloads:
+    path: "C:\\Users\\%USERNAME%\\Downloads"
+    aliases: ["downloads", "download folder", "download"]
+
+  documents:
+    path: "C:\\Users\\%USERNAME%\\Documents"
+    aliases: ["documents", "my documents", "docs"]
+
+  desktop:
+    path: "C:\\Users\\%USERNAME%\\Desktop"
+    aliases: ["desktop"]
+
+  pictures:
+    path: "C:\\Users\\%USERNAME%\\Pictures"
+    aliases: ["pictures", "photos", "images"]
+
+  music:
+    path: "C:\\Users\\%USERNAME%\\Music"
+    aliases: ["music", "music folder", "songs"]
+
+  videos:
+    path: "C:\\Users\\%USERNAME%\\Videos"
+    aliases: ["videos", "video folder", "movies"]
+
+# =============================================================================
+# WEBSITES
+# =============================================================================
+# Quick access to websites
+
+websites:
+  youtube:
+    url: "https://www.youtube.com"
+    aliases: ["youtube", "yt"]
+
+  google:
+    url: "https://www.google.com"
+    aliases: ["google", "google search"]
+
+  gmail:
+    url: "https://mail.google.com"
+    aliases: ["gmail", "email", "mail"]
+
+  github:
+    url: "https://github.com"
+    aliases: ["github", "git hub"]
+
+  chatgpt:
+    url: "https://chat.openai.com"
+    aliases: ["chatgpt", "chat gpt", "gpt"]
+
+  claude:
+    url: "https://claude.ai"
+    aliases: ["claude", "claude ai"]

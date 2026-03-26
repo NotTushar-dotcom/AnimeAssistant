@@ -2,19 +2,55 @@
 
 > *"Your personal anime companion that lives on your desktop"*
 
-An AI-powered anime assistant with a Japanese-accented English voice, emotional expressions, and full system control capabilities. Built with Claude Opus 4.6 for intelligence, ElevenLabs for voice, and Live2D for anime character animation.
+An AI-powered anime assistant with a Japanese-accented English voice, emotional expressions, and full system control capabilities. Supports **both FREE and Premium** services for every component!
 
 ---
 
-## Tech Stack (Best-of-Best)
+## Service Options (Free vs Premium)
+
+Every component has **free alternatives** so you can run Aara without spending money!
+
+| Component | FREE Option | Premium Option | Notes |
+|-----------|-------------|----------------|-------|
+| **LLM Brain** | Ollama (local) / Groq | Claude Opus 4.6 | Ollama = 100% free & private |
+| **Speech-to-Text** | Whisper Local | Whisper API | Local is actually better! |
+| **Text-to-Speech** | Edge TTS | ElevenLabs | Edge TTS is surprisingly good |
+| **Wake Word** | Hotkey (Ctrl+Space) | Picovoice | Hotkey = simple & reliable |
+| **Web Search** | DuckDuckGo | Serper/Tavily | DDG is unlimited & free |
+| **Weather** | Open-Meteo | OpenWeatherMap | Open-Meteo needs NO API key! |
+| **Memory** | SQLite + ChromaDB | Same | Both are free |
+| **Character** | GIF Sprites | Live2D | GIFs work great to start |
+
+### Quick Presets
+
+```bash
+# In your .env file, set:
+AARA_PRESET=free      # All free services (DEFAULT)
+AARA_PRESET=balanced  # Groq cloud + free TTS (best free quality)
+AARA_PRESET=premium   # Claude + ElevenLabs (best possible quality)
+```
+
+### Completely Free Stack (No API keys needed!)
+
+| Service | What to Install | Quality |
+|---------|-----------------|---------|
+| **Ollama** | [ollama.ai](https://ollama.ai) → `ollama pull llama3.2:8b` | Great |
+| **Whisper** | `pip install openai-whisper` (runs locally) | Excellent |
+| **Edge TTS** | `pip install edge-tts` (Microsoft free API) | Very Good |
+| **DuckDuckGo** | `pip install duckduckgo-search` | Good |
+| **Open-Meteo** | Built-in (uses requests) | Excellent |
+
+---
+
+## Tech Stack (Current Selection)
 
 | Component | Technology | Status |
 |-----------|------------|--------|
-| **LLM Brain** | Claude Opus 4.6 | Pending |
-| **Speech-to-Text** | OpenAI Whisper `large-v3` | Pending |
-| **Text-to-Speech** | ElevenLabs (Japanese accent) | Pending |
-| **Wake Word** | Picovoice Porcupine | Pending |
-| **Character** | Live2D Cubism SDK | Pending |
+| **LLM Brain** | Ollama / Claude Opus 4.6 | Pending |
+| **Speech-to-Text** | Whisper Local | Pending |
+| **Text-to-Speech** | Edge TTS / ElevenLabs | Pending |
+| **Wake Word** | Hotkey / Picovoice | Pending |
+| **Character** | GIF / Live2D | Partial |
 | **GUI Framework** | PySide6 + OpenGL | Partial |
 | **Memory** | SQLite + ChromaDB | Pending |
 | **System Control** | PyAutoGUI + subprocess | Pending |
@@ -199,27 +235,70 @@ An AI-powered anime assistant with a Japanese-accented English voice, emotional 
 
 ---
 
-## Required API Keys
+## API Keys Guide
 
-Create a `.env` file in the project root:
+### Running 100% FREE (No API Keys!)
+
+If you use the free preset, you need **ZERO API keys**:
 
 ```env
-# Required
-ANTHROPIC_API_KEY=your_claude_api_key_here
-ELEVENLABS_API_KEY=your_elevenlabs_api_key_here
-PICOVOICE_ACCESS_KEY=your_picovoice_key_here
+AARA_PRESET=free
 
-# Optional (for extra features)
-OPENWEATHERMAP_API_KEY=your_weather_api_key_here
-SERPER_API_KEY=your_serper_api_key_here
+# That's it! These services need no keys:
+# - Ollama (local LLM) → Just install from ollama.ai
+# - Whisper (local STT) → Included in requirements
+# - Edge TTS → Microsoft's free TTS, works automatically
+# - DuckDuckGo → Free search, no key
+# - Open-Meteo → Free weather, no key
 ```
 
-### Where to get API keys:
-1. **Anthropic (Claude)**: [console.anthropic.com](https://console.anthropic.com)
-2. **ElevenLabs**: [elevenlabs.io](https://elevenlabs.io)
-3. **Picovoice**: [picovoice.ai](https://picovoice.ai) (free tier available)
-4. **OpenWeatherMap**: [openweathermap.org/api](https://openweathermap.org/api)
-5. **Serper**: [serper.dev](https://serper.dev)
+### Optional Free API Keys (Better quality, still free)
+
+```env
+# Groq - FREE cloud LLM (Llama 3.1 70B) - fast & high quality
+# Get at: https://console.groq.com
+GROQ_API_KEY=your_groq_key
+
+# Google Gemini - FREE tier (15 req/min)
+# Get at: https://makersuite.google.com/app/apikey
+GOOGLE_API_KEY=your_gemini_key
+```
+
+### Premium API Keys (Best quality, costs money)
+
+```env
+AARA_PRESET=premium
+
+# Claude Opus 4.6 - Best LLM ($15/1M tokens)
+# Get at: https://console.anthropic.com
+ANTHROPIC_API_KEY=your_claude_key
+
+# ElevenLabs - Best voices ($5/mo starter)
+# Get at: https://elevenlabs.io
+ELEVENLABS_API_KEY=your_elevenlabs_key
+ELEVENLABS_VOICE_ID_ENGLISH=voice_id
+ELEVENLABS_VOICE_ID_HINDI=voice_id
+
+# Picovoice - Custom wake word (free tier: 3 words)
+# Get at: https://picovoice.ai
+PICOVOICE_ACCESS_KEY=your_picovoice_key
+
+# Serper - Google search results ($50/5000 searches)
+# Get at: https://serper.dev
+SERPER_API_KEY=your_serper_key
+```
+
+### Quick Reference
+
+| Service | FREE Option | Premium Option | Key Required? |
+|---------|------------|----------------|---------------|
+| LLM | Ollama (local) | Claude | No / Yes |
+| LLM | Groq (cloud) | - | Yes (free) |
+| TTS | Edge TTS | ElevenLabs | No / Yes |
+| STT | Whisper Local | - | No |
+| Search | DuckDuckGo | Serper | No / Yes |
+| Weather | Open-Meteo | OpenWeatherMap | No / No |
+| Wake Word | Hotkey | Picovoice | No / Yes |
 
 ---
 

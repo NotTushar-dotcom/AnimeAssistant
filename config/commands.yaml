@@ -1,0 +1,358 @@
+# =============================================================================
+# AARA - VOICE COMMAND PATTERNS
+# =============================================================================
+# Defines patterns for recognizing voice commands
+# Each pattern maps to an intent type and handler
+
+# =============================================================================
+# APPLICATION CONTROL
+# =============================================================================
+app_commands:
+  - patterns:
+      - "open {app}"
+      - "launch {app}"
+      - "start {app}"
+      - "run {app}"
+    intent: app_launch
+    parameters:
+      app: string
+
+  - patterns:
+      - "close {app}"
+      - "quit {app}"
+      - "exit {app}"
+      - "kill {app}"
+      - "stop {app}"
+    intent: app_close
+    parameters:
+      app: string
+
+  - patterns:
+      - "is {app} running"
+      - "is {app} open"
+      - "check if {app} is open"
+    intent: app_status
+    parameters:
+      app: string
+
+# =============================================================================
+# VOLUME CONTROL
+# =============================================================================
+volume_commands:
+  - patterns:
+      - "volume up"
+      - "increase volume"
+      - "louder"
+      - "turn it up"
+    intent: volume_up
+    parameters: {}
+
+  - patterns:
+      - "volume down"
+      - "decrease volume"
+      - "quieter"
+      - "turn it down"
+    intent: volume_down
+    parameters: {}
+
+  - patterns:
+      - "mute"
+      - "mute volume"
+      - "silence"
+      - "be quiet"
+    intent: volume_mute
+    parameters: {}
+
+  - patterns:
+      - "unmute"
+      - "unmute volume"
+    intent: volume_unmute
+    parameters: {}
+
+  - patterns:
+      - "set volume to {level}"
+      - "volume {level}"
+      - "volume at {level}"
+    intent: volume_set
+    parameters:
+      level: integer
+
+# =============================================================================
+# MEDIA CONTROL
+# =============================================================================
+media_commands:
+  - patterns:
+      - "play"
+      - "resume"
+      - "continue"
+    intent: media_play
+    parameters: {}
+
+  - patterns:
+      - "pause"
+      - "stop playing"
+    intent: media_pause
+    parameters: {}
+
+  - patterns:
+      - "play pause"
+      - "toggle play"
+    intent: media_toggle
+    parameters: {}
+
+  - patterns:
+      - "next"
+      - "next track"
+      - "next song"
+      - "skip"
+    intent: media_next
+    parameters: {}
+
+  - patterns:
+      - "previous"
+      - "previous track"
+      - "previous song"
+      - "go back"
+    intent: media_previous
+    parameters: {}
+
+  - patterns:
+      - "play {query} on spotify"
+      - "play {query} on music"
+      - "play {query}"
+    intent: media_play_query
+    parameters:
+      query: string
+
+# =============================================================================
+# WEB SEARCH
+# =============================================================================
+search_commands:
+  - patterns:
+      - "search for {query}"
+      - "search {query}"
+      - "google {query}"
+      - "look up {query}"
+      - "find {query}"
+    intent: web_search
+    parameters:
+      query: string
+
+  - patterns:
+      - "search youtube for {query}"
+      - "youtube search {query}"
+      - "find {query} on youtube"
+    intent: youtube_search
+    parameters:
+      query: string
+
+# =============================================================================
+# WEATHER
+# =============================================================================
+weather_commands:
+  - patterns:
+      - "what's the weather"
+      - "what is the weather"
+      - "how's the weather"
+      - "weather"
+      - "current weather"
+    intent: weather_current
+    parameters: {}
+
+  - patterns:
+      - "weather in {city}"
+      - "what's the weather in {city}"
+      - "how's the weather in {city}"
+    intent: weather_city
+    parameters:
+      city: string
+
+  - patterns:
+      - "will it rain"
+      - "will it rain today"
+      - "is it going to rain"
+    intent: weather_rain
+    parameters: {}
+
+# =============================================================================
+# TIMER & REMINDERS
+# =============================================================================
+timer_commands:
+  - patterns:
+      - "set a timer for {duration}"
+      - "timer for {duration}"
+      - "set timer {duration}"
+      - "start a {duration} timer"
+    intent: timer_set
+    parameters:
+      duration: string
+
+  - patterns:
+      - "cancel timer"
+      - "stop timer"
+      - "clear timer"
+    intent: timer_cancel
+    parameters: {}
+
+  - patterns:
+      - "how much time left"
+      - "time remaining"
+      - "check timer"
+    intent: timer_check
+    parameters: {}
+
+  - patterns:
+      - "remind me to {task} in {duration}"
+      - "reminder to {task} in {duration}"
+      - "remind me about {task} in {duration}"
+    intent: reminder_set
+    parameters:
+      task: string
+      duration: string
+
+# =============================================================================
+# NOTES
+# =============================================================================
+notes_commands:
+  - patterns:
+      - "take a note {content}"
+      - "note {content}"
+      - "remember {content}"
+      - "save note {content}"
+    intent: note_add
+    parameters:
+      content: string
+
+  - patterns:
+      - "read my notes"
+      - "what are my notes"
+      - "show notes"
+      - "list notes"
+    intent: note_list
+    parameters: {}
+
+  - patterns:
+      - "clear all notes"
+      - "delete all notes"
+      - "remove all notes"
+    intent: note_clear
+    parameters: {}
+
+# =============================================================================
+# SYSTEM CONTROL
+# =============================================================================
+system_commands:
+  - patterns:
+      - "shutdown"
+      - "shut down"
+      - "turn off computer"
+      - "power off"
+    intent: system_shutdown
+    parameters: {}
+
+  - patterns:
+      - "restart"
+      - "reboot"
+      - "restart computer"
+    intent: system_restart
+    parameters: {}
+
+  - patterns:
+      - "sleep"
+      - "go to sleep"
+      - "computer sleep"
+    intent: system_sleep
+    parameters: {}
+
+  - patterns:
+      - "lock"
+      - "lock screen"
+      - "lock computer"
+    intent: system_lock
+    parameters: {}
+
+  - patterns:
+      - "cancel shutdown"
+      - "abort shutdown"
+      - "don't shut down"
+    intent: system_cancel_shutdown
+    parameters: {}
+
+# =============================================================================
+# FILE OPERATIONS
+# =============================================================================
+file_commands:
+  - patterns:
+      - "open {folder} folder"
+      - "go to {folder}"
+      - "show {folder}"
+    intent: folder_open
+    parameters:
+      folder: string
+
+  - patterns:
+      - "find files named {query}"
+      - "search files {query}"
+      - "find {query} files"
+    intent: file_search
+    parameters:
+      query: string
+
+# =============================================================================
+# CLIPBOARD
+# =============================================================================
+clipboard_commands:
+  - patterns:
+      - "copy {text}"
+      - "copy that"
+      - "copy to clipboard"
+    intent: clipboard_copy
+    parameters:
+      text: string
+
+  - patterns:
+      - "paste"
+      - "paste that"
+      - "paste clipboard"
+    intent: clipboard_paste
+    parameters: {}
+
+  - patterns:
+      - "what's in clipboard"
+      - "read clipboard"
+      - "show clipboard"
+    intent: clipboard_read
+    parameters: {}
+
+# =============================================================================
+# SPECIAL COMMANDS
+# =============================================================================
+special_commands:
+  - patterns:
+      - "stop"
+      - "be quiet"
+      - "shut up"
+      - "cancel"
+    intent: stop_speaking
+    parameters: {}
+
+  - patterns:
+      - "repeat that"
+      - "say that again"
+      - "what did you say"
+    intent: repeat_last
+    parameters: {}
+
+  - patterns:
+      - "help"
+      - "what can you do"
+      - "show commands"
+    intent: show_help
+    parameters: {}
+
+  - patterns:
+      - "settings"
+      - "open settings"
+      - "preferences"
+    intent: open_settings
+    parameters: {}

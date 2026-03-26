@@ -1,0 +1,3 @@
+"""
+Aara UI Assets Package
+"""

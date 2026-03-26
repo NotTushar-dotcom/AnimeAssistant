@@ -1,10 +1,11 @@
 # =============================================================================
-# AARA - ANIME ASSISTANT DEPENDENCIES
+# AARA - ANIME DESKTOP ASSISTANT DEPENDENCIES
 # =============================================================================
-# Organized by: Core → Free alternatives → Premium options
+# Strategy: Premium services first → Free fallback
+# Organized by component
 
 # =============================================================================
-# CORE (Always needed)
+# CORE (Always Required)
 # =============================================================================
 PySide6>=6.6.0
 python-dotenv>=1.0.0
@@ -14,121 +15,86 @@ pillow>=10.0.0
 requests>=2.31.0
 
 # =============================================================================
-# LLM - LANGUAGE MODELS
+# LLM PROVIDERS
 # =============================================================================
+# PREMIUM: Anthropic Claude
+anthropic>=0.45.0
 
-# FREE: Ollama (Local) - No package needed, install from ollama.ai
-# FREE: Groq Cloud
+# FREE: Groq (cloud, free tier)
 groq>=0.4.0
 
 # FREE: Google Gemini
 google-generativeai>=0.3.0
 
-# FREE: OpenRouter
-openai>=1.10.0  # OpenRouter uses OpenAI-compatible API
-
-# PREMIUM: Anthropic Claude
-anthropic>=0.45.0
+# For OpenRouter and OpenAI-compatible APIs
+openai>=1.10.0
 
 # =============================================================================
 # TEXT-TO-SPEECH (TTS)
 # =============================================================================
-
-# FREE: Edge TTS (Microsoft) - RECOMMENDED
-edge-tts>=6.1.0
-
-# FREE: Coqui TTS (Open source, local)
-# TTS>=0.22.0  # Uncomment if you want Coqui (large download)
-
-# FREE: pyttsx3 (Basic offline, works everywhere)
-pyttsx3>=2.90
-
-# FREE: Bark (Very expressive, needs GPU)
-# bark>=0.1.5  # Uncomment if you have a good GPU
-
 # PREMIUM: ElevenLabs
 elevenlabs>=1.0.0
+
+# FREE: Microsoft Edge TTS (recommended free option)
+edge-tts>=6.1.0
+
+# FALLBACK: Offline pyttsx3
+pyttsx3>=2.90
 
 # =============================================================================
 # SPEECH-TO-TEXT (STT)
 # =============================================================================
-
-# FREE: Whisper Local - RECOMMENDED
+# Whisper (local) - best quality
 openai-whisper>=20231117
 
-# FREE: Vosk (Lightweight, offline)
+# Vosk (lightweight, offline)
 vosk>=0.3.45
 
-# FREE: SpeechRecognition (Google free tier)
-SpeechRecognition>=3.10.0
-
-# Audio capture (needed for all STT)
-pyaudio>=0.2.14
+# Audio capture
 sounddevice>=0.4.6
+soundfile>=0.12.1
 
 # =============================================================================
-# WAKE WORD DETECTION
+# WAKE WORD / ACTIVATION
 # =============================================================================
-
-# FREE: OpenWakeWord
-openwakeword>=0.5.0
-
-# PREMIUM: Picovoice Porcupine (has free tier too)
+# PREMIUM: Picovoice Porcupine
 pvporcupine>=3.0.0
 
-# Hotkey detection (free, no wake word)
+# FREE: Keyboard hotkey detection
 pynput>=1.7.6
 
 # =============================================================================
 # WEB SEARCH
 # =============================================================================
-
-# FREE: DuckDuckGo - RECOMMENDED
+# FREE: DuckDuckGo
 duckduckgo-search>=4.0.0
-
-# FREE: Wikipedia
-wikipedia>=1.4.0
-
-# PREMIUM: Tavily
-tavily-python>=0.3.0
-
-# =============================================================================
-# WEATHER
-# =============================================================================
-
-# FREE: Open-Meteo - No package needed, uses requests
-# FREE: OpenWeatherMap - No package needed, uses requests
 
 # =============================================================================
 # MEMORY & DATABASE
 # =============================================================================
-
-# Semantic memory (vector DB)
+# Vector database for long-term memory
 chromadb>=0.4.0
 
-# SQLite is built into Python - no install needed
+# SQLite is built-in to Python
 
 # =============================================================================
 # SYSTEM CONTROL
 # =============================================================================
-
 # Mouse/keyboard automation
 pyautogui>=0.9.54
 
-# Window management
+# Window management (Windows)
 pygetwindow>=0.0.9
 
-# Browser automation
-selenium>=4.15.0
+# Volume control (Windows)
+pycaw>=20230407
 
-# =============================================================================
-# OPTIONAL: LIVE2D (Advanced character animation)
-# =============================================================================
-# Requires manual setup - uncomment if using Live2D
-# PyOpenGL>=3.1.7
-# PyOpenGL_accelerate>=3.1.7
+# Clipboard
+pyperclip>=1.8.2
 
 # =============================================================================
 # UTILITIES
 # =============================================================================
-colorama>=0.4.6  # Colored terminal output
+colorama>=0.4.6
+aiohttp>=3.9.0
+aiofiles>=23.2.1

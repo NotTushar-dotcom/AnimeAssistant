@@ -1,0 +1,77 @@
+# =============================================================================
+# AARA DARK THEME
+# =============================================================================
+# Default dark theme with purple accents
+
+name: Dark
+version: "1.0"
+
+# Primary colors
+background: "#1e1e2e"
+surface: "#2e2e3e"
+foreground: "#ffffff"
+
+# Accent colors
+primary: "#a855f7"      # Purple
+secondary: "#6366f1"    # Indigo
+accent: "#ec4899"       # Pink
+
+# Semantic colors
+success: "#10b981"
+warning: "#f59e0b"
+error: "#ef4444"
+info: "#3b82f6"
+
+# Text colors
+text:
+  primary: "#ffffff"
+  secondary: "#a0a0a0"
+  muted: "#666666"
+  disabled: "#444444"
+
+# Chat colors
+chat:
+  user_bubble: "#3b82f6"
+  user_text: "#ffffff"
+  assistant_bubble: "#a855f7"
+  assistant_text: "#ffffff"
+  timestamp: "rgba(255, 255, 255, 0.5)"
+
+# UI element colors
+button:
+  primary_bg: "#a855f7"
+  primary_hover: "#9333ea"
+  primary_text: "#ffffff"
+  secondary_bg: "#4e4e5e"
+  secondary_hover: "#5e5e6e"
+  secondary_text: "#ffffff"
+
+input:
+  background: "rgba(255, 255, 255, 0.1)"
+  border: "rgba(255, 255, 255, 0.2)"
+  focus_border: "#a855f7"
+  text: "#ffffff"
+  placeholder: "#888888"
+
+# Character emotions
+emotions:
+  happy: "#FFD700"
+  excited: "#FF6B6B"
+  thinking: "#87CEEB"
+  concerned: "#FFA07A"
+  shy: "#FFB6C1"
+  surprised: "#DDA0DD"
+  sad: "#B0C4DE"
+  playful: "#98FB98"
+  determined: "#FF8C00"
+  curious: "#00CED1"
+  proud: "#9370DB"
+  worried: "#F0E68C"
+  relaxed: "#E6E6FA"
+  focused: "#4169E1"
+
+# Scrollbar
+scrollbar:
+  background: "rgba(255, 255, 255, 0.1)"
+  thumb: "rgba(255, 255, 255, 0.3)"
+  thumb_hover: "rgba(255, 255, 255, 0.5)"
