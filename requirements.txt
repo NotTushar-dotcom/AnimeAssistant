@@ -1,33 +1,134 @@
-# Core Dependencies
+# =============================================================================
+# AARA - ANIME ASSISTANT DEPENDENCIES
+# =============================================================================
+# Organized by: Core → Free alternatives → Premium options
+
+# =============================================================================
+# CORE (Always needed)
+# =============================================================================
 PySide6>=6.6.0
-anthropic>=0.45.0
 python-dotenv>=1.0.0
 pyyaml>=6.0
+numpy>=1.26.0
+pillow>=10.0.0
+requests>=2.31.0
 
-# Voice Processing
-openai-whisper>=20231117
+# =============================================================================
+# LLM - LANGUAGE MODELS
+# =============================================================================
+
+# FREE: Ollama (Local) - No package needed, install from ollama.ai
+# FREE: Groq Cloud
+groq>=0.4.0
+
+# FREE: Google Gemini
+google-generativeai>=0.3.0
+
+# FREE: OpenRouter
+openai>=1.10.0  # OpenRouter uses OpenAI-compatible API
+
+# PREMIUM: Anthropic Claude
+anthropic>=0.45.0
+
+# =============================================================================
+# TEXT-TO-SPEECH (TTS)
+# =============================================================================
+
+# FREE: Edge TTS (Microsoft) - RECOMMENDED
+edge-tts>=6.1.0
+
+# FREE: Coqui TTS (Open source, local)
+# TTS>=0.22.0  # Uncomment if you want Coqui (large download)
+
+# FREE: pyttsx3 (Basic offline, works everywhere)
+pyttsx3>=2.90
+
+# FREE: Bark (Very expressive, needs GPU)
+# bark>=0.1.5  # Uncomment if you have a good GPU
+
+# PREMIUM: ElevenLabs
 elevenlabs>=1.0.0
-pvporcupine>=3.0.0
+
+# =============================================================================
+# SPEECH-TO-TEXT (STT)
+# =============================================================================
+
+# FREE: Whisper Local - RECOMMENDED
+openai-whisper>=20231117
+
+# FREE: Vosk (Lightweight, offline)
+vosk>=0.3.45
+
+# FREE: SpeechRecognition (Google free tier)
+SpeechRecognition>=3.10.0
+
+# Audio capture (needed for all STT)
 pyaudio>=0.2.14
 sounddevice>=0.4.6
 
-# Memory & Data
-chromadb>=0.4.0
-sqlite3
+# =============================================================================
+# WAKE WORD DETECTION
+# =============================================================================
 
-# System Control
-pyautogui>=0.9.54
-pygetwindow>=0.0.9
+# FREE: OpenWakeWord
+openwakeword>=0.5.0
+
+# PREMIUM: Picovoice Porcupine (has free tier too)
+pvporcupine>=3.0.0
+
+# Hotkey detection (free, no wake word)
 pynput>=1.7.6
 
-# Web & Browser
+# =============================================================================
+# WEB SEARCH
+# =============================================================================
+
+# FREE: DuckDuckGo - RECOMMENDED
+duckduckgo-search>=4.0.0
+
+# FREE: Wikipedia
+wikipedia>=1.4.0
+
+# PREMIUM: Tavily
+tavily-python>=0.3.0
+
+# =============================================================================
+# WEATHER
+# =============================================================================
+
+# FREE: Open-Meteo - No package needed, uses requests
+# FREE: OpenWeatherMap - No package needed, uses requests
+
+# =============================================================================
+# MEMORY & DATABASE
+# =============================================================================
+
+# Semantic memory (vector DB)
+chromadb>=0.4.0
+
+# SQLite is built into Python - no install needed
+
+# =============================================================================
+# SYSTEM CONTROL
+# =============================================================================
+
+# Mouse/keyboard automation
+pyautogui>=0.9.54
+
+# Window management
+pygetwindow>=0.0.9
+
+# Browser automation
 selenium>=4.15.0
-requests>=2.31.0
 
-# Utilities
-numpy>=1.26.0
-pillow>=10.0.0
-
-# Optional: Live2D (requires manual setup)
+# =============================================================================
+# OPTIONAL: LIVE2D (Advanced character animation)
+# =============================================================================
+# Requires manual setup - uncomment if using Live2D
 # PyOpenGL>=3.1.7
 # PyOpenGL_accelerate>=3.1.7
+
+# =============================================================================
+# UTILITIES
+# =============================================================================
+colorama>=0.4.6  # Colored terminal output
