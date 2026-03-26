@@ -1,0 +1,100 @@
+# Application Registry
+# Maps common app names to their executable paths on Windows
+# Aara uses this to launch applications
+
+applications:
+  # Development
+  vscode:
+    name: "Visual Studio Code"
+    path: "code"
+    aliases: ["vs code", "visual studio code", "code editor"]
+
+  notepad:
+    name: "Notepad"
+    path: "notepad.exe"
+    aliases: ["text editor", "notepad++"]
+
+  terminal:
+    name: "Windows Terminal"
+    path: "wt.exe"
+    aliases: ["cmd", "command prompt", "powershell", "shell"]
+
+  # Browsers
+  chrome:
+    name: "Google Chrome"
+    path: "chrome"
+    aliases: ["google chrome", "browser", "web browser"]
+
+  firefox:
+    name: "Mozilla Firefox"
+    path: "firefox"
+    aliases: ["mozilla", "fire fox"]
+
+  edge:
+    name: "Microsoft Edge"
+    path: "msedge"
+    aliases: ["microsoft edge"]
+
+  # Media
+  spotify:
+    name: "Spotify"
+    path: "spotify"
+    aliases: ["music", "music player"]
+
+  vlc:
+    name: "VLC Media Player"
+    path: "vlc"
+    aliases: ["video player", "media player"]
+
+  # Communication
+  discord:
+    name: "Discord"
+    path: "discord"
+    aliases: ["disc"]
+
+  slack:
+    name: "Slack"
+    path: "slack"
+    aliases: []
+
+  # Productivity
+  explorer:
+    name: "File Explorer"
+    path: "explorer.exe"
+    aliases: ["files", "file manager", "my computer", "this pc"]
+
+  calculator:
+    name: "Calculator"
+    path: "calc.exe"
+    aliases: ["calc"]
+
+  # Games (customize these)
+  steam:
+    name: "Steam"
+    path: "steam"
+    aliases: ["games", "game launcher"]
+
+# System commands (not applications)
+system_commands:
+  shutdown:
+    command: "shutdown /s /t 0"
+    confirmation_required: true
+
+  restart:
+    command: "shutdown /r /t 0"
+    confirmation_required: true
+
+  sleep:
+    command: "rundll32.exe powrprof.dll,SetSuspendState 0,1,0"
+    confirmation_required: true
+
+  lock:
+    command: "rundll32.exe user32.dll,LockWorkStation"
+    confirmation_required: false
+
+# Volume control
+volume:
+  mute: "nircmd.exe mutesysvolume 2"
+  volume_up: "nircmd.exe changesysvolume 5000"
+  volume_down: "nircmd.exe changesysvolume -5000"
+  set_volume: "nircmd.exe setsysvolume {value}"  # 0-65535
